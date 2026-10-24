@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>To-do List</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <style>
+        body{
+            height: 100vh;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+        }
+        :root{
+            --bg-color : rgb(253, 210, 158);
+            --text-color : rgb(37, 26, 5);
+            --card-color : rgb(216, 153, 70);
+            --add-task-btn : rgb(158, 110, 6);
+            --list :rgba(230, 190, 144, 0.384);
+            --delete-btn : rgb(231, 214, 182);
+        }
+        body.dark{
+            --bg-color : #1a1a1a;
+            --text-color : white;
+            --card-color : rgb(71, 65, 57);
+            --add-task-btn : rgba(97, 0, 187, 0.753);
+            --list : #524c4c;
+            --delete-btn : red;
+
+        }
+        .card{
+            padding: 15px;
+            border-radius: 7px;
+            background-color: var(--card-color);
+        }
+        div.card h1{
+            text-align: center;
+            font-weight: bold;
+            font-size: x-large;
+            margin-bottom: 10px;
+        }
+        .add_task{
+            display: flex;
+            gap: 15px;
+        }
+        div.add_task input{
+            border: 1px solid white;
+            background-color: #22010110;
+            padding: 2px;
+            border-radius: 5px;
+            padding-left: 8px;
+        }
+        div.add_task button{
+            background-color: var(--add-task-btn);
+            padding: 5px;
+            border-radius: 5px;
+        }
+        li{
+            display: flex;
+            gap: 15px;
+            background-color: var(--list);
+            padding: 10px;
+            margin: 10px 0px;
+            border-radius: 7px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        li button{
+            background-color: var(--delete-btn);
+            padding: 5px;
+            border-radius: 5px;
+        }
+        li.completed span{
+            text-decoration-line: line-through;
+        }
+        .theme-switch{
+            position: relative;
+            display: inline-block;
+            width: 50px;
+            height: 26px;
+        }
+        /*   Hide the actual checkbox */
+        .theme-switch input{ 
+            position: absolute;
+            margin: 0;
+            cursor: pointer;
+            z-index: 2;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+        }
+        /* Slider in light mode */
+        .slider{
+            position: absolute;
+            inset: 0;
+            cursor: pointer;
+            background-color: #f79606;
+            border-radius: 50px;
+            cursor: pointer;;
+        }
+        .slider::before {
+            content: "";
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            left: 3px;
+            bottom: 3px;
+            background-color: white;
+            border-radius: 50%;
+            transition: transform 0.3s ease;
+        }
+        /* Slider in dark mode */
+        .theme-switch input:checked + .slider {
+            background-color: #333;
+        }
+        .theme-switch input:checked + .slider::before {
+            transform: translateX(24px);
+        }
+        .theme-switch-container{
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            z-index : 1000;
+        }
+        #to-doInput::placeholder{
+            color: white;
+        }
+
+    </style>
+</head>
+<body class="">
+    <div class="theme-switch-container">
+
+        <label for="" class="theme-switch">
+            <input type="checkbox" id="themeToggle">
+            <span class="slider"></span>
+        </label>
+    </div>
+    <div class="card">
+        <h1>To-Do List</h1>
+        <div class="add_task">
+            <input type="text" name="" id="to-doInput" placeholder="Enter New Task">
+            <button id="addTaskBtn">Add Task</button>
+        </div>
+        <ul id="To-doList">
+            
+        </ul>
+
+
+    </div>
+<script src="script.js"></script>
+</body>
+</html>
